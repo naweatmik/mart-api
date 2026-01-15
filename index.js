@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// 마트 식품 데이터 (40개) - 실제 상품 이미지 포함
+// 마트 식품 데이터 (40개) - 이미지 URL 직접 입력
 const products = [
   // 과자류 (10개)
   {
@@ -25,7 +25,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8667329/86673296595.1.jpg"
+    image: "https://sitem.ssgcdn.com/97/81/30/item/1000005308197_i1_232.jpg"
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248498/82484989498.2.jpg"
+    image: "https://sitem.ssgcdn.com/32/46/10/item/0000008104632_i1_232.jpg"
   },
   {
     id: 3,
@@ -59,7 +59,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8667330/86673300858.jpg"
+    image: "https://sitem.ssgcdn.com/76/16/31/item/0000008311676_i1_232.jpg"
   },
   {
     id: 4,
@@ -76,7 +76,7 @@ const products = [
     storage: "개봉 후 밀봉하여 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248168/82481686498.jpg"
+    image: "https://sitem.ssgcdn.com/84/69/96/item/1000641966984_i1_232.jpg"
   },
   {
     id: 5,
@@ -93,7 +93,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8667330/86673300618.jpg"
+    image: "https://sitem.ssgcdn.com/72/29/66/item/1000018662972_i1_232.jpg"
   },
   {
     id: 6,
@@ -110,7 +110,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 120,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248558/82485583498.jpg"
+    image: "https://sitem.ssgcdn.com/00/39/78/item/0000008783900_i1_232.jpg"
   },
   {
     id: 7,
@@ -127,7 +127,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248497/82484973348.jpg"
+    image: "https://sitem.ssgcdn.com/21/88/30/item/0000008308821_i1_232.jpg"
   },
   {
     id: 8,
@@ -144,7 +144,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: false,
-    image: "https://shopping-phinf.pstatic.net/main_8248504/82485049598.jpg"
+    image: "https://sitem.ssgcdn.com/04/00/26/item/0000007260004_i1_232.jpg"
   },
   {
     id: 9,
@@ -161,7 +161,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248504/82485040498.jpg"
+    image: "https://sitem.ssgcdn.com/41/33/87/item/1000027873341_i1_232.jpg"
   },
   {
     id: 10,
@@ -178,7 +178,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248499/82484991648.jpg"
+    image: "https://sitem.ssgcdn.com/38/61/93/item/1000572936138_i1_232.jpg"
   },
 
   // 라면류 (8개)
@@ -197,7 +197,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8667329/86673294547.1.jpg"
+    image: "https://sitem.ssgcdn.com/48/36/33/item/0000008333648_i1_232.jpg"
   },
   {
     id: 12,
@@ -214,7 +214,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248222/82482229248.1.jpg"
+    image: "https://sitem.ssgcdn.com/69/08/61/item/0000006610869_i1_232.jpg"
   },
   {
     id: 13,
@@ -231,7 +231,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248207/82482078198.1.jpg"
+    image: "https://sitem.ssgcdn.com/65/02/56/item/1000042560265_i1_232.jpg"
   },
   {
     id: 14,
@@ -248,7 +248,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248223/82482234148.1.jpg"
+    image: "https://sitem.ssgcdn.com/64/92/54/item/0000008549264_i1_232.jpg"
   },
   {
     id: 15,
@@ -265,7 +265,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248207/82482071698.1.jpg"
+    image: "https://sitem.ssgcdn.com/20/36/33/item/0000008333620_i1_232.jpg"
   },
   {
     id: 16,
@@ -282,7 +282,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248207/82482072398.1.jpg"
+    image: "https://sitem.ssgcdn.com/62/36/33/item/0000008333662_i1_232.jpg"
   },
   {
     id: 17,
@@ -299,7 +299,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248222/82482228998.1.jpg"
+    image: "https://sitem.ssgcdn.com/94/79/14/item/1000043147994_i1_232.jpg"
   },
   {
     id: 18,
@@ -316,7 +316,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: false,
-    image: "https://shopping-phinf.pstatic.net/main_8248222/82482227848.1.jpg"
+    image: "https://sitem.ssgcdn.com/02/55/39/item/1000542395502_i1_232.jpg"
   },
 
   // 음료류 (8개)
@@ -335,7 +335,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248291/82482913698.jpg"
+    image: "https://sitem.ssgcdn.com/55/32/08/item/0000007083255_i1_232.jpg"
   },
   {
     id: 20,
@@ -352,7 +352,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248291/82482913948.jpg"
+    image: "https://sitem.ssgcdn.com/84/49/07/item/0000008074984_i1_232.jpg"
   },
   {
     id: 21,
@@ -369,7 +369,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248296/82482961048.jpg"
+    image: "https://sitem.ssgcdn.com/70/57/69/item/0000007695770_i1_232.jpg"
   },
   {
     id: 22,
@@ -386,7 +386,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248290/82482903698.jpg"
+    image: "https://sitem.ssgcdn.com/34/91/60/item/0000006609134_i1_232.jpg"
   },
   {
     id: 23,
@@ -403,7 +403,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 545,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248290/82482905748.jpg"
+    image: "https://sitem.ssgcdn.com/06/03/09/item/1000656090306_i1_232.jpg"
   },
   {
     id: 24,
@@ -420,7 +420,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 730,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248288/82482883848.jpg"
+    image: "https://sitem.ssgcdn.com/46/07/33/item/1000015330746_i1_232.jpg"
   },
   {
     id: 25,
@@ -437,7 +437,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248303/82483030698.jpg"
+    image: "https://sitem.ssgcdn.com/90/92/24/item/1000028249290_i1_232.jpg"
   },
   {
     id: 26,
@@ -454,7 +454,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248303/82483030198.jpg"
+    image: "https://sitem.ssgcdn.com/95/43/69/item/1000529694395_i1_232.jpg"
   },
 
   // 아이스크림 (6개)
@@ -473,7 +473,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248351/82483511998.jpg"
+    image: "https://sitem.ssgcdn.com/39/42/32/item/1000048324239_i1_232.jpg"
   },
   {
     id: 28,
@@ -490,7 +490,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248351/82483512698.jpg"
+    image: "https://sitem.ssgcdn.com/55/37/55/item/0000008553755_i1_232.jpg"
   },
   {
     id: 29,
@@ -507,7 +507,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248351/82483510748.jpg"
+    image: "https://sitem.ssgcdn.com/35/39/98/item/0000008983935_i1_232.jpg"
   },
   {
     id: 30,
@@ -524,7 +524,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248351/82483513098.jpg"
+    image: "https://sitem.ssgcdn.com/80/86/98/item/1000674988680_i1_232.jpg"
   },
   {
     id: 31,
@@ -541,7 +541,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: false,
-    image: "https://shopping-phinf.pstatic.net/main_8248351/82483512898.jpg"
+    image: "https://sitem.ssgcdn.com/98/59/48/item/1000705485998_i1_232.jpg"
   },
   {
     id: 32,
@@ -558,7 +558,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 730,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248352/82483524548.jpg"
+    image: "https://sitem.ssgcdn.com/79/67/59/item/1000573596779_i1_232.jpg"
   },
 
   // 즉석식품 (8개)
@@ -577,7 +577,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248265/82482651998.jpg"
+    image: "https://sitem.ssgcdn.com/43/28/28/item/1000553282843_i1_232.jpg"
   },
   {
     id: 34,
@@ -594,7 +594,7 @@ const products = [
     storage: "직사광선을 피하고 상온 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248264/82482641398.jpg"
+    image: "https://sitem.ssgcdn.com/69/86/21/item/0000008218669_i1_232.jpg"
   },
   {
     id: 35,
@@ -611,7 +611,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248413/82484131598.jpg"
+    image: "https://sitem.ssgcdn.com/64/51/30/item/1000319305164_i1_232.jpg"
   },
   {
     id: 36,
@@ -628,7 +628,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248413/82484132398.jpg"
+    image: "https://sitem.ssgcdn.com/77/95/68/item/1000032689577_i1_232.jpg"
   },
   {
     id: 37,
@@ -645,7 +645,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248261/82482618898.jpg"
+    image: "https://sitem.ssgcdn.com/50/97/60/item/0000006609750_i1_232.jpg"
   },
   {
     id: 38,
@@ -662,7 +662,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248261/82482617498.jpg"
+    image: "https://sitem.ssgcdn.com/37/48/44/item/1000009444837_i1_232.jpg"
   },
   {
     id: 39,
@@ -679,7 +679,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248222/82482230798.jpg"
+    image: "https://sitem.ssgcdn.com/45/23/79/item/1000013792345_i1_232.jpg"
   },
   {
     id: 40,
@@ -696,7 +696,7 @@ const products = [
     storage: "개봉 후 냉장보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://shopping-phinf.pstatic.net/main_8248574/82485743848.jpg"
+    image: "https://sitem.ssgcdn.com/94/88/72/item/1000031728894_i1_232.jpg"
   }
 ];
 
@@ -706,9 +706,8 @@ const products = [
 app.get('/', (req, res) => {
   res.json({
     message: '🛒 마트 식품 API에 오신 것을 환영합니다!',
-    version: '1.2.0',
+    version: '1.0.0',
     totalProducts: products.length,
-    note: '실제 상품 이미지가 포함되어 있습니다',
     endpoints: {
       '모든 상품 조회': 'GET /api/products',
       '상품 ID로 조회': 'GET /api/products/:id',
@@ -737,14 +736,14 @@ app.get('/api/products', (req, res) => {
 app.get('/api/products/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find(p => p.id === id);
-  
+
   if (!product) {
     return res.status(404).json({
       success: false,
       message: `ID ${id}인 상품을 찾을 수 없습니다.`
     });
   }
-  
+
   res.json({
     success: true,
     data: product
@@ -754,10 +753,10 @@ app.get('/api/products/:id', (req, res) => {
 // 카테고리별 조회
 app.get('/api/products/category/:category', (req, res) => {
   const category = decodeURIComponent(req.params.category);
-  const filtered = products.filter(p => 
+  const filtered = products.filter(p =>
     p.category.toLowerCase() === category.toLowerCase()
   );
-  
+
   if (filtered.length === 0) {
     return res.status(404).json({
       success: false,
@@ -765,7 +764,7 @@ app.get('/api/products/category/:category', (req, res) => {
       availableCategories: [...new Set(products.map(p => p.category))]
     });
   }
-  
+
   res.json({
     success: true,
     category: category,
@@ -777,10 +776,10 @@ app.get('/api/products/category/:category', (req, res) => {
 // 브랜드별 조회
 app.get('/api/products/brand/:brand', (req, res) => {
   const brand = decodeURIComponent(req.params.brand);
-  const filtered = products.filter(p => 
+  const filtered = products.filter(p =>
     p.brand.toLowerCase() === brand.toLowerCase()
   );
-  
+
   if (filtered.length === 0) {
     return res.status(404).json({
       success: false,
@@ -788,7 +787,7 @@ app.get('/api/products/brand/:brand', (req, res) => {
       availableBrands: [...new Set(products.map(p => p.brand))]
     });
   }
-  
+
   res.json({
     success: true,
     brand: brand,
@@ -800,21 +799,21 @@ app.get('/api/products/brand/:brand', (req, res) => {
 // 상품 검색
 app.get('/api/search', (req, res) => {
   const query = req.query.q;
-  
+
   if (!query) {
     return res.status(400).json({
       success: false,
       message: '검색어를 입력해주세요. 예: /api/search?q=새우'
     });
   }
-  
-  const filtered = products.filter(p => 
+
+  const filtered = products.filter(p =>
     p.name.toLowerCase().includes(query.toLowerCase()) ||
     p.description.toLowerCase().includes(query.toLowerCase()) ||
     p.brand.toLowerCase().includes(query.toLowerCase()) ||
     p.category.toLowerCase().includes(query.toLowerCase())
   );
-  
+
   res.json({
     success: true,
     query: query,
@@ -826,7 +825,7 @@ app.get('/api/search', (req, res) => {
 // 재고 있는 상품만 조회
 app.get('/api/products/in-stock', (req, res) => {
   const inStock = products.filter(p => p.inStock);
-  
+
   res.json({
     success: true,
     count: inStock.length,
@@ -838,9 +837,9 @@ app.get('/api/products/in-stock', (req, res) => {
 app.get('/api/products/price', (req, res) => {
   const min = parseInt(req.query.min) || 0;
   const max = parseInt(req.query.max) || 100000;
-  
+
   const filtered = products.filter(p => p.price >= min && p.price <= max);
-  
+
   res.json({
     success: true,
     priceRange: { min, max },
@@ -856,7 +855,7 @@ app.get('/api/categories', (req, res) => {
     name: cat,
     count: products.filter(p => p.category === cat).length
   }));
-  
+
   res.json({
     success: true,
     count: categories.length,
@@ -871,7 +870,7 @@ app.get('/api/brands', (req, res) => {
     name: brand,
     count: products.filter(p => p.brand === brand).length
   }));
-  
+
   res.json({
     success: true,
     count: brands.length,
@@ -884,7 +883,7 @@ app.get('/api/random', (req, res) => {
   const count = parseInt(req.query.count) || 1;
   const shuffled = [...products].sort(() => 0.5 - Math.random());
   const selected = shuffled.slice(0, Math.min(count, products.length));
-  
+
   res.json({
     success: true,
     message: '오늘의 랜덤 추천 상품입니다! 🎲',
@@ -897,5 +896,4 @@ app.get('/api/random', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ 마트 API 서버가 포트 ${PORT}에서 실행 중입니다`);
   console.log(`📦 총 ${products.length}개의 상품이 등록되어 있습니다`);
-  console.log(`🖼️ 실제 상품 이미지 포함`);
 });
