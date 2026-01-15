@@ -7,21 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// 이미지 URL 생성 함수 (200x200 사이즈 통일)
-const getImageUrl = (id, category) => {
-  // 카테고리별 색상 지정
-  const colors = {
-    "과자": "FF6B6B",    // 빨간색
-    "라면": "FFE66D",    // 노란색
-    "음료": "4ECDC4",    // 청록색
-    "아이스크림": "A8E6CF", // 민트색
-    "즉석식품": "DDA0DD"   // 보라색
-  };
-  const color = colors[category] || "CCCCCC";
-  return `https://placehold.co/200x200/${color}/FFFFFF?text=${encodeURIComponent(category)}+${id}`;
-};
-
-// 마트 식품 데이터 (40개)
+// 마트 식품 데이터 (40개) - 실제 상품 이미지 포함
 const products = [
   // 과자류 (10개)
   {
@@ -39,7 +25,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=새우깡"
+    image: "https://shopping-phinf.pstatic.net/main_8667329/86673296595.1.jpg"
   },
   {
     id: 2,
@@ -56,7 +42,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=포카칩"
+    image: "https://shopping-phinf.pstatic.net/main_8248498/82484989498.2.jpg"
   },
   {
     id: 3,
@@ -73,7 +59,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=꼬깔콘"
+    image: "https://shopping-phinf.pstatic.net/main_8667330/86673300858.jpg"
   },
   {
     id: 4,
@@ -90,7 +76,7 @@ const products = [
     storage: "개봉 후 밀봉하여 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=프링글스"
+    image: "https://shopping-phinf.pstatic.net/main_8248168/82481686498.jpg"
   },
   {
     id: 5,
@@ -107,7 +93,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=오징어집"
+    image: "https://shopping-phinf.pstatic.net/main_8667330/86673300618.jpg"
   },
   {
     id: 6,
@@ -124,7 +110,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 120,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=초코파이"
+    image: "https://shopping-phinf.pstatic.net/main_8248558/82485583498.jpg"
   },
   {
     id: 7,
@@ -141,7 +127,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=칸쵸"
+    image: "https://shopping-phinf.pstatic.net/main_8248497/82484973348.jpg"
   },
   {
     id: 8,
@@ -158,7 +144,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: false,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=홈런볼"
+    image: "https://shopping-phinf.pstatic.net/main_8248504/82485049598.jpg"
   },
   {
     id: 9,
@@ -175,7 +161,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=빼빼로"
+    image: "https://shopping-phinf.pstatic.net/main_8248504/82485040498.jpg"
   },
   {
     id: 10,
@@ -192,7 +178,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=오레오"
+    image: "https://shopping-phinf.pstatic.net/main_8248499/82484991648.jpg"
   },
 
   // 라면류 (8개)
@@ -211,7 +197,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=신라면"
+    image: "https://shopping-phinf.pstatic.net/main_8667329/86673294547.1.jpg"
   },
   {
     id: 12,
@@ -228,7 +214,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=진라면"
+    image: "https://shopping-phinf.pstatic.net/main_8248222/82482229248.1.jpg"
   },
   {
     id: 13,
@@ -245,7 +231,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=짜파게티"
+    image: "https://shopping-phinf.pstatic.net/main_8248207/82482078198.1.jpg"
   },
   {
     id: 14,
@@ -262,7 +248,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=불닭볶음면"
+    image: "https://shopping-phinf.pstatic.net/main_8248223/82482234148.1.jpg"
   },
   {
     id: 15,
@@ -279,7 +265,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=너구리"
+    image: "https://shopping-phinf.pstatic.net/main_8248207/82482071698.1.jpg"
   },
   {
     id: 16,
@@ -296,7 +282,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=안성탕면"
+    image: "https://shopping-phinf.pstatic.net/main_8248207/82482072398.1.jpg"
   },
   {
     id: 17,
@@ -313,7 +299,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=참깨라면"
+    image: "https://shopping-phinf.pstatic.net/main_8248222/82482228998.1.jpg"
   },
   {
     id: 18,
@@ -330,7 +316,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: false,
-    image: "https://placehold.co/200x200/FFE66D/333333?text=김치라면"
+    image: "https://shopping-phinf.pstatic.net/main_8248222/82482227848.1.jpg"
   },
 
   // 음료류 (8개)
@@ -349,7 +335,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=코카콜라"
+    image: "https://shopping-phinf.pstatic.net/main_8248291/82482913698.jpg"
   },
   {
     id: 20,
@@ -366,7 +352,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=스프라이트"
+    image: "https://shopping-phinf.pstatic.net/main_8248291/82482913948.jpg"
   },
   {
     id: 21,
@@ -383,7 +369,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=밀키스"
+    image: "https://shopping-phinf.pstatic.net/main_8248296/82482961048.jpg"
   },
   {
     id: 22,
@@ -400,7 +386,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=포카리스웨트"
+    image: "https://shopping-phinf.pstatic.net/main_8248290/82482903698.jpg"
   },
   {
     id: 23,
@@ -417,7 +403,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 545,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=비타500"
+    image: "https://shopping-phinf.pstatic.net/main_8248290/82482905748.jpg"
   },
   {
     id: 24,
@@ -434,7 +420,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 730,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=삼다수"
+    image: "https://shopping-phinf.pstatic.net/main_8248288/82482883848.jpg"
   },
   {
     id: 25,
@@ -451,7 +437,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=초코우유"
+    image: "https://shopping-phinf.pstatic.net/main_8248303/82483030698.jpg"
   },
   {
     id: 26,
@@ -468,7 +454,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=바나나우유"
+    image: "https://shopping-phinf.pstatic.net/main_8248303/82483030198.jpg"
   },
 
   // 아이스크림 (6개)
@@ -487,7 +473,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=메로나"
+    image: "https://shopping-phinf.pstatic.net/main_8248351/82483511998.jpg"
   },
   {
     id: 28,
@@ -504,7 +490,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=월드콘"
+    image: "https://shopping-phinf.pstatic.net/main_8248351/82483512698.jpg"
   },
   {
     id: 29,
@@ -521,7 +507,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=붕어싸만코"
+    image: "https://shopping-phinf.pstatic.net/main_8248351/82483510748.jpg"
   },
   {
     id: 30,
@@ -538,7 +524,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=죠스바"
+    image: "https://shopping-phinf.pstatic.net/main_8248351/82483513098.jpg"
   },
   {
     id: 31,
@@ -555,7 +541,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: false,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=스크류바"
+    image: "https://shopping-phinf.pstatic.net/main_8248351/82483512898.jpg"
   },
   {
     id: 32,
@@ -572,7 +558,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 730,
     inStock: true,
-    image: "https://placehold.co/200x200/A8E6CF/333333?text=하겐다즈"
+    image: "https://shopping-phinf.pstatic.net/main_8248352/82483524548.jpg"
   },
 
   // 즉석식품 (8개)
@@ -591,7 +577,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=3분카레"
+    image: "https://shopping-phinf.pstatic.net/main_8248265/82482651998.jpg"
   },
   {
     id: 34,
@@ -608,7 +594,7 @@ const products = [
     storage: "직사광선을 피하고 상온 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=햇반"
+    image: "https://shopping-phinf.pstatic.net/main_8248264/82482641398.jpg"
   },
   {
     id: 35,
@@ -625,7 +611,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=비비고만두"
+    image: "https://shopping-phinf.pstatic.net/main_8248413/82484131598.jpg"
   },
   {
     id: 36,
@@ -642,7 +628,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=얇은피만두"
+    image: "https://shopping-phinf.pstatic.net/main_8248413/82484132398.jpg"
   },
   {
     id: 37,
@@ -659,7 +645,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=참치캔"
+    image: "https://shopping-phinf.pstatic.net/main_8248261/82482618898.jpg"
   },
   {
     id: 38,
@@ -676,7 +662,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=스팸"
+    image: "https://shopping-phinf.pstatic.net/main_8248261/82482617498.jpg"
   },
   {
     id: 39,
@@ -693,7 +679,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=진짬뽕"
+    image: "https://shopping-phinf.pstatic.net/main_8248222/82482230798.jpg"
   },
   {
     id: 40,
@@ -710,7 +696,7 @@ const products = [
     storage: "개봉 후 냉장보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=불닭소스"
+    image: "https://shopping-phinf.pstatic.net/main_8248574/82485743848.jpg"
   }
 ];
 
@@ -720,9 +706,9 @@ const products = [
 app.get('/', (req, res) => {
   res.json({
     message: '🛒 마트 식품 API에 오신 것을 환영합니다!',
-    version: '1.1.0',
+    version: '1.2.0',
     totalProducts: products.length,
-    imageSize: '200x200px (모든 상품 동일)',
+    note: '실제 상품 이미지가 포함되어 있습니다',
     endpoints: {
       '모든 상품 조회': 'GET /api/products',
       '상품 ID로 조회': 'GET /api/products/:id',
@@ -911,5 +897,5 @@ app.get('/api/random', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ 마트 API 서버가 포트 ${PORT}에서 실행 중입니다`);
   console.log(`📦 총 ${products.length}개의 상품이 등록되어 있습니다`);
-  console.log(`🖼️ 모든 상품 이미지: 200x200px`);
+  console.log(`🖼️ 실제 상품 이미지 포함`);
 });
