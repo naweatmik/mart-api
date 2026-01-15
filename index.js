@@ -1,7 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS 설정 - 모든 도메인에서 접근 허용
+app.use(cors());
 app.use(express.json());
 
 // 마트 식품 데이터 (40개)
