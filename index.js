@@ -7,6 +7,20 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// 이미지 URL 생성 함수 (200x200 사이즈 통일)
+const getImageUrl = (id, category) => {
+  // 카테고리별 색상 지정
+  const colors = {
+    "과자": "FF6B6B",    // 빨간색
+    "라면": "FFE66D",    // 노란색
+    "음료": "4ECDC4",    // 청록색
+    "아이스크림": "A8E6CF", // 민트색
+    "즉석식품": "DDA0DD"   // 보라색
+  };
+  const color = colors[category] || "CCCCCC";
+  return `https://via.placeholder.com/200x200/${color}/FFFFFF?text=${encodeURIComponent(category)}+${id}`;
+};
+
 // 마트 식품 데이터 (40개)
 const products = [
   // 과자류 (10개)
@@ -24,7 +38,8 @@ const products = [
     allergens: ["밀", "새우", "대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=새우깡"
   },
   {
     id: 2,
@@ -40,7 +55,8 @@ const products = [
     allergens: ["대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=포카칩"
   },
   {
     id: 3,
@@ -56,7 +72,8 @@ const products = [
     allergens: ["대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=꼬깔콘"
   },
   {
     id: 4,
@@ -72,7 +89,8 @@ const products = [
     allergens: ["밀"],
     storage: "개봉 후 밀봉하여 보관",
     expiryDays: 365,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=프링글스"
   },
   {
     id: 5,
@@ -88,7 +106,8 @@ const products = [
     allergens: ["밀", "오징어", "대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=오징어집"
   },
   {
     id: 6,
@@ -104,7 +123,8 @@ const products = [
     allergens: ["밀", "계란", "대두", "우유"],
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 120,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=초코파이"
   },
   {
     id: 7,
@@ -120,7 +140,8 @@ const products = [
     allergens: ["밀", "대두", "우유"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=칸쵸"
   },
   {
     id: 8,
@@ -136,7 +157,8 @@ const products = [
     allergens: ["밀", "대두", "우유"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
-    inStock: false
+    inStock: false,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=홈런볼"
   },
   {
     id: 9,
@@ -152,7 +174,8 @@ const products = [
     allergens: ["밀", "대두", "우유"],
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 365,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=빼빼로"
   },
   {
     id: 10,
@@ -168,7 +191,8 @@ const products = [
     allergens: ["밀", "대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=오레오"
   },
 
   // 라면류 (8개)
@@ -186,7 +210,8 @@ const products = [
     allergens: ["밀", "대두", "쇠고기"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=신라면"
   },
   {
     id: 12,
@@ -202,7 +227,8 @@ const products = [
     allergens: ["밀", "대두", "쇠고기"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=진라면"
   },
   {
     id: 13,
@@ -218,7 +244,8 @@ const products = [
     allergens: ["밀", "대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=짜파게티"
   },
   {
     id: 14,
@@ -234,7 +261,8 @@ const products = [
     allergens: ["밀", "대두", "닭고기"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=불닭볶음면"
   },
   {
     id: 15,
@@ -250,7 +278,8 @@ const products = [
     allergens: ["밀", "대두", "조개류"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=너구리"
   },
   {
     id: 16,
@@ -266,7 +295,8 @@ const products = [
     allergens: ["밀", "대두", "쇠고기"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=안성탕면"
   },
   {
     id: 17,
@@ -282,7 +312,8 @@ const products = [
     allergens: ["밀", "대두", "참깨"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=참깨라면"
   },
   {
     id: 18,
@@ -298,7 +329,8 @@ const products = [
     allergens: ["밀", "대두"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: false
+    inStock: false,
+    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=김치라면"
   },
 
   // 음료류 (8개)
@@ -316,7 +348,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=코카콜라"
   },
   {
     id: 20,
@@ -332,7 +365,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=스프라이트"
   },
   {
     id: 21,
@@ -348,7 +382,8 @@ const products = [
     allergens: ["우유"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=밀키스"
   },
   {
     id: 22,
@@ -364,7 +399,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=포카리스웨트"
   },
   {
     id: 23,
@@ -380,7 +416,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 545,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=비타500"
   },
   {
     id: 24,
@@ -396,7 +433,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 730,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=삼다수"
   },
   {
     id: 25,
@@ -412,7 +450,8 @@ const products = [
     allergens: ["우유"],
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=초코우유"
   },
   {
     id: 26,
@@ -428,7 +467,8 @@ const products = [
     allergens: ["우유"],
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=바나나우유"
   },
 
   // 아이스크림 (6개)
@@ -446,7 +486,8 @@ const products = [
     allergens: ["우유"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=메로나"
   },
   {
     id: 28,
@@ -462,7 +503,8 @@ const products = [
     allergens: ["우유", "밀", "대두"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=월드콘"
   },
   {
     id: 29,
@@ -478,7 +520,8 @@ const products = [
     allergens: ["우유", "밀"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=붕어싸만코"
   },
   {
     id: 30,
@@ -494,7 +537,8 @@ const products = [
     allergens: [],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=죠스바"
   },
   {
     id: 31,
@@ -510,7 +554,8 @@ const products = [
     allergens: [],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
-    inStock: false
+    inStock: false,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=스크류바"
   },
   {
     id: 32,
@@ -526,7 +571,8 @@ const products = [
     allergens: ["우유"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 730,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=하겐다즈"
   },
 
   // 즉석식품 (8개)
@@ -544,7 +590,8 @@ const products = [
     allergens: ["밀", "대두", "쇠고기", "우유"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=3분카레"
   },
   {
     id: 34,
@@ -560,7 +607,8 @@ const products = [
     allergens: [],
     storage: "직사광선을 피하고 상온 보관",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=햇반"
   },
   {
     id: 35,
@@ -576,7 +624,8 @@ const products = [
     allergens: ["밀", "대두", "돼지고기"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=비비고만두"
   },
   {
     id: 36,
@@ -592,7 +641,8 @@ const products = [
     allergens: ["밀", "대두", "돼지고기"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=얇은피만두"
   },
   {
     id: 37,
@@ -608,7 +658,8 @@ const products = [
     allergens: ["생선"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=참치캔"
   },
   {
     id: 38,
@@ -624,7 +675,8 @@ const products = [
     allergens: ["돼지고기"],
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=스팸"
   },
   {
     id: 39,
@@ -640,7 +692,8 @@ const products = [
     allergens: ["밀", "대두", "조개류", "새우", "오징어"],
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=진짬뽕"
   },
   {
     id: 40,
@@ -656,7 +709,8 @@ const products = [
     allergens: ["밀", "대두", "참깨"],
     storage: "개봉 후 냉장보관",
     expiryDays: 365,
-    inStock: true
+    inStock: true,
+    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=불닭소스"
   }
 ];
 
@@ -666,8 +720,9 @@ const products = [
 app.get('/', (req, res) => {
   res.json({
     message: '🛒 마트 식품 API에 오신 것을 환영합니다!',
-    version: '1.0.0',
+    version: '1.1.0',
     totalProducts: products.length,
+    imageSize: '200x200px (모든 상품 동일)',
     endpoints: {
       '모든 상품 조회': 'GET /api/products',
       '상품 ID로 조회': 'GET /api/products/:id',
@@ -856,4 +911,5 @@ app.get('/api/random', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ 마트 API 서버가 포트 ${PORT}에서 실행 중입니다`);
   console.log(`📦 총 ${products.length}개의 상품이 등록되어 있습니다`);
+  console.log(`🖼️ 모든 상품 이미지: 200x200px`);
 });
