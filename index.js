@@ -18,7 +18,7 @@ const getImageUrl = (id, category) => {
     "즉석식품": "DDA0DD"   // 보라색
   };
   const color = colors[category] || "CCCCCC";
-  return `https://via.placeholder.com/200x200/${color}/FFFFFF?text=${encodeURIComponent(category)}+${id}`;
+  return `https://placehold.co/200x200/${color}/FFFFFF?text=${encodeURIComponent(category)}+${id}`;
 };
 
 // 마트 식품 데이터 (40개)
@@ -39,7 +39,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=새우깡"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=새우깡"
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=포카칩"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=포카칩"
   },
   {
     id: 3,
@@ -73,7 +73,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=꼬깔콘"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=꼬깔콘"
   },
   {
     id: 4,
@@ -90,7 +90,7 @@ const products = [
     storage: "개봉 후 밀봉하여 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=프링글스"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=프링글스"
   },
   {
     id: 5,
@@ -107,7 +107,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=오징어집"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=오징어집"
   },
   {
     id: 6,
@@ -124,7 +124,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 120,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=초코파이"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=초코파이"
   },
   {
     id: 7,
@@ -141,7 +141,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=칸쵸"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=칸쵸"
   },
   {
     id: 8,
@@ -158,7 +158,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 150,
     inStock: false,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=홈런볼"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=홈런볼"
   },
   {
     id: 9,
@@ -175,7 +175,7 @@ const products = [
     storage: "서늘하고 건조한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=빼빼로"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=빼빼로"
   },
   {
     id: 10,
@@ -192,7 +192,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FF6B6B/FFFFFF?text=오레오"
+    image: "https://placehold.co/200x200/FF6B6B/FFFFFF?text=오레오"
   },
 
   // 라면류 (8개)
@@ -211,7 +211,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=신라면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=신라면"
   },
   {
     id: 12,
@@ -228,7 +228,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=진라면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=진라면"
   },
   {
     id: 13,
@@ -245,7 +245,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=짜파게티"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=짜파게티"
   },
   {
     id: 14,
@@ -262,7 +262,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=불닭볶음면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=불닭볶음면"
   },
   {
     id: 15,
@@ -279,7 +279,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=너구리"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=너구리"
   },
   {
     id: 16,
@@ -296,7 +296,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=안성탕면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=안성탕면"
   },
   {
     id: 17,
@@ -313,7 +313,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=참깨라면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=참깨라면"
   },
   {
     id: 18,
@@ -330,7 +330,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: false,
-    image: "https://via.placeholder.com/200x200/FFE66D/333333?text=김치라면"
+    image: "https://placehold.co/200x200/FFE66D/333333?text=김치라면"
   },
 
   // 음료류 (8개)
@@ -349,7 +349,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=코카콜라"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=코카콜라"
   },
   {
     id: 20,
@@ -366,7 +366,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=스프라이트"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=스프라이트"
   },
   {
     id: 21,
@@ -383,7 +383,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 180,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=밀키스"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=밀키스"
   },
   {
     id: 22,
@@ -400,7 +400,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=포카리스웨트"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=포카리스웨트"
   },
   {
     id: 23,
@@ -417,7 +417,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 545,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=비타500"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=비타500"
   },
   {
     id: 24,
@@ -434,7 +434,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 730,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=삼다수"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=삼다수"
   },
   {
     id: 25,
@@ -451,7 +451,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=초코우유"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=초코우유"
   },
   {
     id: 26,
@@ -468,7 +468,7 @@ const products = [
     storage: "냉장보관 (0~10°C)",
     expiryDays: 14,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/4ECDC4/FFFFFF?text=바나나우유"
+    image: "https://placehold.co/200x200/4ECDC4/FFFFFF?text=바나나우유"
   },
 
   // 아이스크림 (6개)
@@ -487,7 +487,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=메로나"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=메로나"
   },
   {
     id: 28,
@@ -504,7 +504,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=월드콘"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=월드콘"
   },
   {
     id: 29,
@@ -521,7 +521,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=붕어싸만코"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=붕어싸만코"
   },
   {
     id: 30,
@@ -538,7 +538,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=죠스바"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=죠스바"
   },
   {
     id: 31,
@@ -555,7 +555,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 545,
     inStock: false,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=스크류바"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=스크류바"
   },
   {
     id: 32,
@@ -572,7 +572,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 730,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/A8E6CF/333333?text=하겐다즈"
+    image: "https://placehold.co/200x200/A8E6CF/333333?text=하겐다즈"
   },
 
   // 즉석식품 (8개)
@@ -591,7 +591,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=3분카레"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=3분카레"
   },
   {
     id: 34,
@@ -608,7 +608,7 @@ const products = [
     storage: "직사광선을 피하고 상온 보관",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=햇반"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=햇반"
   },
   {
     id: 35,
@@ -625,7 +625,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=비비고만두"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=비비고만두"
   },
   {
     id: 36,
@@ -642,7 +642,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=얇은피만두"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=얇은피만두"
   },
   {
     id: 37,
@@ -659,7 +659,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=참치캔"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=참치캔"
   },
   {
     id: 38,
@@ -676,7 +676,7 @@ const products = [
     storage: "직사광선을 피하고 서늘한 곳에 보관",
     expiryDays: 1095,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=스팸"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=스팸"
   },
   {
     id: 39,
@@ -693,7 +693,7 @@ const products = [
     storage: "냉동보관 (-18°C 이하)",
     expiryDays: 270,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=진짬뽕"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=진짬뽕"
   },
   {
     id: 40,
@@ -710,7 +710,7 @@ const products = [
     storage: "개봉 후 냉장보관",
     expiryDays: 365,
     inStock: true,
-    image: "https://via.placeholder.com/200x200/DDA0DD/FFFFFF?text=불닭소스"
+    image: "https://placehold.co/200x200/DDA0DD/FFFFFF?text=불닭소스"
   }
 ];
 
